@@ -23,3 +23,8 @@ export interface IFormFooter {
   link: string;
   linkText: string;
 }
+
+export interface IText{
+  children:React.ReactNode;
+  classname?: React.HTMLAttributes<string> | string
+}

@@ -3,4 +3,5 @@ export type {
   IFormInput,
   IFromHeading,
   IFormFooter,
+  IText
 } from "./components";

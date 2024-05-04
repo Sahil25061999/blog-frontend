@@ -1,11 +1,12 @@
-import { FormInput, FormLabel } from "../components";
+import { FormFooter, FormInput, FormLabel } from "../components";
+import { FormHeading } from "../components/formHeading";
 
 export function Signup() {
   return (
     <main className=" h-screen w-full sm:flex flex-row">
       <div className=" w-full h-full flex justify-center items-center sm:flex-1">
         <div>
-          <h1 className=" text-2xl font-bold">Create an account</h1>
+          <FormHeading heading="Create an account" />
           <form className=" flex flex-col gap-2 mt-4">
             <div>
               <FormLabel htmlFor="username" label="Username" />
@@ -43,16 +44,22 @@ export function Signup() {
               </button>
             </div>
           </form>
-          <p className=" text-center text-sm mt-2">
-            Already have an account ? signin
-          </p>
+          <div className=" mt-2">
+            <FormFooter
+              footerText={"Already have an account?"}
+              link={"/signin"}
+              linkText={"Login"}
+            />
+          </div>
         </div>
       </div>
       <div className="hidden md:flex flex-1 justify-center items-center bg-stone-900 text-stone-200">
         <div className=" sm:p-2 md:p-4">
           <h1 className="  md:text-xl font-bold leading-snug">
-            Words have power.<br/> 
-            They can uplift, inspire, and ignite change.<br/> 
+            Words have power.
+            <br />
+            They can uplift, inspire, and ignite change.
+            <br />
             Let your voice be heard in the vast ocean of ideas.
           </h1>
           <p className=" mt-2">Sun tzu</p>

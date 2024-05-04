@@ -13,3 +13,13 @@ export interface IFormInput {
   id: string;
   name: string;
 }
+
+export interface IFromHeading {
+  heading: string;
+}
+
+export interface IFormFooter {
+  footerText: string;
+  link: string;
+  linkText: string;
+}

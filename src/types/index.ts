@@ -1,1 +1,6 @@
-export { type IFormLabel } from "./components";
+export type {
+  IFormLabel,
+  IFormInput,
+  IFromHeading,
+  IFormFooter,
+} from "./components";

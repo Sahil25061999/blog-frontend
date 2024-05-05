@@ -1,3 +1,4 @@
+import { width } from "../constants";
 import { Navbar } from "./navbar";
 
 interface ILayout {
@@ -7,7 +8,7 @@ interface ILayout {
 
 export function Layout({ children, showNav = true }: ILayout) {
   return (
-    <div className="  w-[min(1300px,calc(100%-2rem))] h-full mx-auto">
+    <div className={` ${width} h-full mx-auto`}>
       {showNav ? <Navbar /> : null}
       <div className="h-full  py-8 ">{children}</div>
     </div>

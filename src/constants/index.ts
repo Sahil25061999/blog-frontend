@@ -1,0 +1,1 @@
+export { width } from "./styles";

@@ -1,0 +1,1 @@
+export const width = "w-[min(1300px,calc(100%-2rem))]"

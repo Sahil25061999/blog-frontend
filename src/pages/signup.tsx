@@ -1,4 +1,4 @@
-import { FormFooter, FormInput, FormLabel } from "../components";
+import { FormFooter, FormInput, FormLabel, PrimaryBtn } from "../components";
 import { FormHeading } from "../components/formHeading";
 
 export function Signup() {
@@ -39,9 +39,7 @@ export function Signup() {
               />
             </div>
             <div className=" mt-4">
-              <button className=" bg-stone-900 px-4 py-3 w-full text-stone-50 rounded-full">
-                Sign up
-              </button>
+              <PrimaryBtn btnText="Sign up" onClick={() => console.log()} />
             </div>
           </form>
           <div className=" mt-2">

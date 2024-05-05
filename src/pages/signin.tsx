@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { FormFooter, FormInput, FormLabel } from "../components";
+import { FormFooter, FormInput, FormLabel, PrimaryBtn } from "../components";
 import { FormHeading } from "../components/formHeading";
 
 export function Signin() {
@@ -7,7 +6,7 @@ export function Signin() {
     <main className=" h-screen w-full sm:flex flex-row">
       <div className=" w-full h-full flex justify-center items-center sm:flex-1">
         <div>
-          <FormHeading heading="Blog in"/>
+          <FormHeading heading="Blog in" />
           <form className=" flex flex-col gap-2 mt-4">
             <div>
               <FormLabel htmlFor="email" label="Email" />
@@ -30,18 +29,20 @@ export function Signin() {
               />
             </div>
             <div className=" mt-4">
-              <button className=" bg-stone-900 px-4 py-3 w-full text-stone-50 rounded-full">
-                Sign up
-              </button>
+              <PrimaryBtn onClick={() => console.log()} btnText="Sign In" />
             </div>
           </form>
-         <div className=" mt-2">
-          <FormFooter footerText={"Don't have an account?"} link={'/signup'} linkText={"Signup"}/>
-         </div>
+          <div className=" mt-2">
+            <FormFooter
+              footerText={"Don't have an account?"}
+              link={"/signup"}
+              linkText={"Signup"}
+            />
+          </div>
         </div>
       </div>
       <div className="hidden md:flex flex-1 justify-center items-center bg-stone-900 text-stone-200">
-      <div className=" sm:p-2 md:p-4">
+        <div className=" sm:p-2 md:p-4">
           <h1 className="  md:text-xl font-bold leading-snug">
             Words have power.
             <br />

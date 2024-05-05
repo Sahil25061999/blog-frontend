@@ -1,9 +1,29 @@
+import { useState } from "react";
 import { Layout, PrimaryBtn } from "../components";
 import { width } from "../constants";
 import { useBlogCreate } from "../context";
+import { API } from "../api/config";
 
 export function Create() {
+  const [form, setForm] = useState({
+    title: "",
+    content: "",
+  });
   const { showBlogCreate, toggleBlogCreate } = useBlogCreate()!;
+
+  const handleInput = (value: string, field: string) => {
+    setForm((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const publishPost = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const res = await API.post("/blog/", form);
+      console.log(res.data.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <div
@@ -41,20 +61,24 @@ export function Create() {
         <div className=" bg-white h-[calc(100vh-3rem)]">
           <Layout showNav={false}>
             <div className="w-full h-full ">
-              <form className=" w-full h-full">
+              <form className=" w-full h-full" onSubmit={publishPost}>
                 <input
+                  onChange={(e) => handleInput(e.target.value, "title")}
                   placeholder="Title"
                   className="w-full border-b border-b-stone-200 text-3xl py-2 outline-none"
                   type="text"
                   name="title"
                   id="title"
+                  value={form.title}
                 />
                 <textarea
+                  onChange={(e) => handleInput(e.target.value, "content")}
+                  value={form.content}
                   className=" mt-4 w-full h-4/5 outline-none text-lg resize-none"
                   placeholder="Content"
                 ></textarea>
                 <div className=" bg-red-300">
-                <PrimaryBtn classname=" float-right" onClick={()=>console.log()} btnText="Publish" />
+                  <PrimaryBtn classname=" float-right" btnText="Publish" />
                 </div>
               </form>
             </div>

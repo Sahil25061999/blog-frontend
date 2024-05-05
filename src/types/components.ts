@@ -12,6 +12,7 @@ export interface IFormInput {
   onChange: ChangeEventHandler<HTMLInputElement>;
   id: string;
   name: string;
+  value: string;
 }
 
 export interface IFromHeading {
@@ -24,7 +25,14 @@ export interface IFormFooter {
   linkText: string;
 }
 
-export interface IText{
-  children:React.ReactNode;
-  classname?: React.HTMLAttributes<string> | string
+export interface IText {
+  children: React.ReactNode;
+  classname?: React.HTMLAttributes<string> | string;
+}
+
+export interface IBlogCard {
+  id:string;
+  author: string;
+  title: string;
+  content: string;
 }

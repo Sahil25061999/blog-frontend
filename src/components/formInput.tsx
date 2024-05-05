@@ -5,6 +5,7 @@ export function FormInput({
   placeholder,
   required,
   onChange,
+  value,
   id,
   name,
 }: IFormInput) {
@@ -17,6 +18,7 @@ export function FormInput({
       placeholder={placeholder}
       required={required}
       onChange={onChange}
+      value={value}
     />
   );
 }

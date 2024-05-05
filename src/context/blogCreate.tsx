@@ -1,12 +1,12 @@
 import { createContext, useContext, useState } from "react";
-import { IText } from "../types";
+import { TChildren } from "../types";
 
 const BlogCreateContext = createContext<{
   showBlogCreate: boolean;
   toggleBlogCreate: () => void;
 } | null>(null);
 
-export const BlogCreateContextProvider = ({ children }: IText) => {
+export const BlogCreateContextProvider = ({ children }: TChildren) => {
   const [showBlogCreate, setShowBlogCreate] = useState(false);
 
   const toggleBlogCreate = () => setShowBlogCreate((prev) => !prev);

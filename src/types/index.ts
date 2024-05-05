@@ -3,5 +3,8 @@ export type {
   IFormInput,
   IFromHeading,
   IFormFooter,
-  IText
+  IText,
+  IBlogCard,
 } from "./components";
+export type { TChildren } from "./shared";
+export type { TBlogCardList } from "./page";

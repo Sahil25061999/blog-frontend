@@ -1,6 +1,6 @@
 interface IPrimaryBtn {
   btnText: string;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
   classname?: string;
 }
 export function PrimaryBtn({ btnText, onClick, classname }: IPrimaryBtn) {

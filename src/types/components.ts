@@ -9,10 +9,11 @@ export interface IFormInput {
   type: HTMLInputTypeAttribute;
   placeholder: string;
   required?: boolean;
-  onChange: ChangeEventHandler<HTMLInputElement>;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   id: string;
   name: string;
-  value: string;
+  value?: string;
+  error?: string | null;
 }
 
 export interface IFromHeading {
@@ -31,7 +32,7 @@ export interface IText {
 }
 
 export interface IBlogCard {
-  id:string;
+  id: string;
   author: string;
   title: string;
   content: string;

@@ -1,27 +1,29 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { FormFooter, FormInput, FormLabel, PrimaryBtn } from "../components";
 import { FormHeading } from "../components/formHeading";
 import { TSignInValidation } from "@sahil2506/blog-types";
 import { API } from "../api/config";
 import { useAuth } from "../context/auth";
 import { useNavigate } from "react-router-dom";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useState } from "react";
 
 export function Signin() {
-  const [formField, setFormField] = useState<TSignInValidation>({
-    email: "",
-    password: "",
-  });
+  const {
+    handleSubmit,
+    formState: { errors },
+    control,
+  } = useForm<TSignInValidation>();
   const navigate = useNavigate();
   const { setToken } = useAuth()!;
+  const [loading, setLoading] = useState(false);
 
-  const handleInput = (value: string, field: "email" | "password") => {
-    setFormField((prev) => ({ ...prev, [field]: value }));
-  };
-
-  const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSignin: SubmitHandler<TSignInValidation> = async (
+    data: TSignInValidation
+  ) => {
+    setLoading(true);
     try {
-      const res = await API.post("/user/signin", formField);
+      const res = await API.post("/user/signin", data);
       if (res.data.success) {
         API.defaults.headers.common.Authorization =
           "Bearer " + res.data.data.token;
@@ -31,6 +33,8 @@ export function Signin() {
       }
     } catch (e) {
       console.log(e);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -39,31 +43,40 @@ export function Signin() {
       <div className=" w-full h-full flex justify-center items-center sm:flex-1">
         <div>
           <FormHeading heading="Blog in" />
-          <form className=" flex flex-col gap-2 mt-4" onSubmit={handleSignin}>
+          <form
+            className=" flex flex-col gap-2 mt-4"
+            onSubmit={handleSubmit(handleSignin)}
+          >
             <div>
               <FormLabel htmlFor="email" label="Email" />
-              <FormInput
-                value={formField.email}
+              <FormInput<TSignInValidation>
+                rules={{ required: "Email is required" }}
+                control={control}
                 id="email"
                 name="email"
                 type="text"
                 placeholder=""
-                onChange={(e) => handleInput(e.target.value, "email")}
+                error={errors.email ? errors.email.message : null}
               />
             </div>
             <div>
               <FormLabel htmlFor="password" label="Password" />
-              <FormInput
-                value={formField.password}
+              <FormInput<TSignInValidation>
+                control={control}
+                rules={{ required: "password is required" }}
                 id="password"
                 name="password"
                 type="password"
                 placeholder=""
-                onChange={(e) => handleInput(e.target.value, "password")}
+                error={errors.password ? errors.password.message : null}
               />
             </div>
             <div className=" mt-4">
-              <PrimaryBtn classname=" w-full" btnText="Sign In" />
+              <PrimaryBtn
+                loading={loading}
+                classname=" w-full"
+                btnText="Sign In"
+              />
             </div>
           </form>
           <div className=" mt-2">

@@ -1,4 +1,6 @@
+import { Avatar } from ".";
 import { useBlogCreate } from "../context";
+import { AvatarVariant } from "../types";
 
 export function Navbar() {
   const {  toggleBlogCreate } = useBlogCreate()!;
@@ -21,9 +23,7 @@ export function Navbar() {
             />
           </svg>
         </button>
-        <div className=" h-10 aspect-square rounded-full bg-green-300 flex items-center justify-center">
-          <button>A</button>
-        </div>
+        <Avatar nameInitial="A" variant={AvatarVariant.medium}/>
       </div>
     </div>
   );

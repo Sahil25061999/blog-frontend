@@ -7,3 +7,4 @@ export { Heading1 } from "./heading1";
 export { Heading2 } from "./heading2";
 export { TextRegular } from "./textRegular";
 export { PrimaryBtn } from "./primaryBtn";
+export { Avatar } from "./avatar";

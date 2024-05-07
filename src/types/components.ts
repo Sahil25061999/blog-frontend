@@ -1,5 +1,16 @@
 import { ChangeEventHandler, HTMLInputTypeAttribute } from "react";
 
+export enum AvatarVariant {
+  small,
+  medium,
+  large,
+}
+
+export interface IAvatar {
+  variant: AvatarVariant;
+  nameInitial: string;
+}
+
 export interface IFormLabel {
   htmlFor: string;
   label: string;

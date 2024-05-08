@@ -6,6 +6,10 @@ export enum AvatarVariant {
   large,
 }
 
+export interface IStyles {
+  classname?: React.HTMLAttributes<string> | string;
+}
+
 export interface IAvatar {
   variant: AvatarVariant;
   nameInitial: string;
@@ -37,9 +41,8 @@ export interface IFormFooter {
   linkText: string;
 }
 
-export interface IText {
+export interface IText extends IStyles {
   children: React.ReactNode;
-  classname?: React.HTMLAttributes<string> | string;
 }
 
 export interface IBlogCard {
@@ -47,4 +50,8 @@ export interface IBlogCard {
   author: string;
   title: string;
   content: string;
+}
+
+export interface IError extends IStyles {
+  message: string;
 }

@@ -8,3 +8,4 @@ export { Heading2 } from "./heading2";
 export { TextRegular } from "./textRegular";
 export { PrimaryBtn } from "./primaryBtn";
 export { Avatar } from "./avatar";
+export { Error } from "./error";

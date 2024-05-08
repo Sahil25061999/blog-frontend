@@ -19,9 +19,13 @@ export function Create() {
   } = useForm<IBlogCreateForm>();
 
   const { showBlogCreate, toggleBlogCreate } = useBlogCreate()!;
+  //styles constant
   const backdropStyle = showBlogCreate ? " backdrop-brightness-50" : " pointer-events-none";
-  const formTransition = showBlogCreate ? " transition-all duration-500  translate-y-0 " : "translate-y-full";
+  const formTransitionStyle = showBlogCreate ? " transition-all duration-500  translate-y-0 " : "translate-y-full";
+  const titleInputErrorStyle = errors.title ? "border-b-red-200" : "border-b-stone-200 ";
+  const contentInputErrorStyle = errors.content ? "border-b border-b-red-200" : "";
 
+  //functions
   const handleClose = () => {
     setValue("title", "");
     setValue("content", "");
@@ -44,7 +48,7 @@ export function Create() {
 
   return (
     <div className={` fixed top-0 h-screen w-full pt-12 transition duration-500  ${backdropStyle}`}>
-      <div className={`  h-full w-full  ${formTransition}`}>
+      <div className={`  h-full w-full  ${formTransitionStyle}`}>
         <div className={` ${width} mx-auto mb-2 flex justify-end`}>
           <button className=" bg-stone-900 rounded-full p-4" onClick={handleClose}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" className="w-6 h-6">
@@ -67,9 +71,7 @@ export function Create() {
                       required: "Title is needed",
                     })}
                     placeholder="Title"
-                    className={`w-full border-b text-3xl py-2 outline-none ${
-                      errors.title ? "border-b-red-200" : "border-b-stone-200 "
-                    }`}
+                    className={`w-full border-b text-3xl py-2 outline-none ${titleInputErrorStyle}`}
                     type="text"
                     name="title"
                     id="title"
@@ -81,9 +83,7 @@ export function Create() {
                     {...register("content", {
                       required: "Content is required",
                     })}
-                    className={` mt-4 w-full h-full outline-none text-lg resize-none ${
-                      errors.content ? "border-b border-b-red-200" : ""
-                    }`}
+                    className={` mt-4 w-full h-full outline-none text-lg resize-none ${contentInputErrorStyle}`}
                     placeholder="Content"
                   ></textarea>
                   {errors.content ? <Error message={errors.content.message!} /> : null}

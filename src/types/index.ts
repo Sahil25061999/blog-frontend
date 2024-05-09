@@ -6,6 +6,7 @@ export type {
   IText,
   IBlogCard,
   IAvatar,
+  IError,
 } from "./components";
 export { AvatarVariant } from "./components";
 export type { TChildren } from "./shared";

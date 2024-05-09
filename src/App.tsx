@@ -3,8 +3,22 @@ import { Blog, Blogs, Protected, Signin, Signup, Public } from "./pages/index";
 import { Create } from "./pages/create";
 import { useAuth } from "./context/auth";
 import { useEffect } from "react";
+import { API } from "./api/config";
+import { useUser } from "./context/user";
 function App() {
   const { token, setToken } = useAuth()!;
+  const { setUser } = useUser();
+
+  const fetchUserDetails = async () => {
+    try {
+      const userRes = await API.get("/user/");
+      if (userRes.data?.success) {
+        setUser(userRes.data.data);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   useEffect(() => {
     const localToken = localStorage.getItem("blogLoginToken");
@@ -12,6 +26,11 @@ function App() {
       setToken(localToken);
     }
   }, []);
+
+  useEffect(() => {
+    fetchUserDetails();
+  }, [token]);
+
   return (
     <div className="  min-h-screen w-full text-stone-900">
       <Routes>

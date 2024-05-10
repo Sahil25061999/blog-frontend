@@ -7,7 +7,7 @@ import { API } from "./api/config";
 import { useUser } from "./context/user";
 function App() {
   const { token, setToken } = useAuth()!;
-  const { setUser } = useUser();
+  const { setUser } = useUser()!;
 
   const fetchUserDetails = async () => {
     try {

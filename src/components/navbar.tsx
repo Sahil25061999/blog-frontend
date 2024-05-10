@@ -6,8 +6,8 @@ import { useUser } from "../context/user";
 
 export function Navbar() {
   const { toggleBlogCreate } = useBlogCreate()!;
-  const { user } = useUser();
-  const userInitial = user?.username?.slice(0,1);
+  const { user } = useUser()!;
+  const userInitial = user?.username?.slice(0, 1);
 
   return (
     <div className=" w-full py-3 flex flex-row justify-between items-center">

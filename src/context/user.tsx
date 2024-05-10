@@ -1,8 +1,17 @@
 import { createContext, useContext, useState } from "react";
+import { TChildren } from "../types";
 
-const UserContext = createContext(null);
+interface IUser {
+  email: string;
+  username: string;
+}
 
-export const UserContextProvider = ({ children }) => {
+const UserContext = createContext<{
+  user: IUser;
+  setUser: React.Dispatch<React.SetStateAction<IUser>>;
+} | null>(null);
+
+export const UserContextProvider = ({ children }: TChildren) => {
   const [user, setUser] = useState({
     email: "",
     username: "",
